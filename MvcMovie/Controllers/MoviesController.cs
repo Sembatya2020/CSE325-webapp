@@ -26,8 +26,9 @@ namespace MvcMovie.Controllers
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
 
-            // Use LINQ to get list of genres.
+            // Use LINQ to get list of genres. Exclude NULL genres to avoid SQLite GetString() errors when a row has a NULL.
             IQueryable<string> genreQuery = from m in _context.Movie
+                                            where m.Genre != null
                                             orderby m.Genre
                                             select m.Genre!;
 
