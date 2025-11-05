@@ -21,7 +21,6 @@ C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\rjsmcshtml.ds
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\scopedcss\bundle\MvcMovie.styles.css
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\scopedcss\projectbundle\MvcMovie.bundle.scp.css
-C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\compressed\euikqtqh4l-b9sayid5wm.gz
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\compressed\s4h06sbw6r-61n19gt1b8.gz
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\compressed\khii5gbrwk-xtxxf3hu2r.gz
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\compressed\l0e8hya28e-bqjiyaj88i.gz
@@ -132,3 +131,5 @@ C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\bin\Debug\net9.0\runtimes\win-
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\MvcMovie.csproj.AssemblyReference.cache
 C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\MvcMovie.csproj.Up2Date
+C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\MvcMovie.sourcelink.json
+C:\Users\DELL\Desktop\.net\CSE325-webapp\MvcMovie\obj\Debug\net9.0\compressed\euikqtqh4l-2nu7hggevg.gz

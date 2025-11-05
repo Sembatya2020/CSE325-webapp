@@ -1,0 +1,36 @@
+# Visual Studio / .NET artifacts
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# NuGet
+packages/
+*.nupkg
+
+# Runtime files
+*.dll
+*.pdb
+*.exe
+*.runtimeconfig.json
+
+# EF and local DB files
+*.db
+*.db-shm
+*.db-wal
+MvcMovie/MvcMovie.db
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Rider
+.idea/
