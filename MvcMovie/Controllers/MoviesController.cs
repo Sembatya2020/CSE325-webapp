@@ -26,6 +26,15 @@ namespace MvcMovie.Controllers
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
 
+            // Repair any rows that have NULL for important string columns (Genre or Rating).
+            // Use a direct SQL UPDATE to avoid materializing rows (which can trigger the
+            // SqliteValueReader.GetString() call on NULL values). This updates the DB in-place
+            // without reading the problematic NULL values into memory.
+            await _context.Database.ExecuteSqlRawAsync(
+                "UPDATE \"Movie\" SET \"Genre\" = 'Unknown' WHERE \"Genre\" IS NULL; " +
+                "UPDATE \"Movie\" SET \"Rating\" = 'Unrated' WHERE \"Rating\" IS NULL;"
+            );
+
             // Use LINQ to get list of genres. Exclude NULL genres to avoid SQLite GetString() errors when a row has a NULL.
             IQueryable<string> genreQuery = from m in _context.Movie
                                             where m.Genre != null
@@ -48,6 +57,38 @@ namespace MvcMovie.Controllers
             if (releaseYear.HasValue)
             {
                 movies = movies.Where(m => m.ReleaseDate.Year >= releaseYear.Value);
+            }
+
+            // Fix any rows in the database that have NULL Genre to avoid SQLite GetString() errors
+            // (this updates the DB in-place once so subsequent reads won't fail).
+            var moviesWithNullGenre = await _context.Movie.Where(m => m.Genre == null).ToListAsync();
+            if (moviesWithNullGenre.Count > 0)
+            {
+                foreach (var m in moviesWithNullGenre)
+                {
+                    m.Genre = "Unknown";
+                }
+                await _context.SaveChangesAsync();
+
+                // Recreate the queries now that data has been fixed
+                genreQuery = from m in _context.Movie
+                             where m.Genre != null
+                             orderby m.Genre
+                             select m.Genre!;
+                movies = from m in _context.Movie
+                         select m;
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    movies = movies.Where(s => s.Title!.ToUpper().Contains(searchString.ToUpper()));
+                }
+                if (!string.IsNullOrEmpty(movieGenre))
+                {
+                    movies = movies.Where(x => x.Genre == movieGenre);
+                }
+                if (releaseYear.HasValue)
+                {
+                    movies = movies.Where(m => m.ReleaseDate.Year >= releaseYear.Value);
+                }
             }
 
             var movieGenreVM = new MvcMovie.Models.MovieGenreViewModel
